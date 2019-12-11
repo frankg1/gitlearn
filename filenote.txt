@@ -1,0 +1,54 @@
+1 三棵树   working directory   stage  repository
+2 modified  staged  commited 这就是三种状态。
+3 git init 命令，初始化git这个Git目录
+需要在这个目录下创建一个readme.md 作为说明。
+4  add命令：   git add 文件名    将工作空间的文件加入到暂存区域。
+5  commit 命令：git commit -m ' ' 将暂存区域的文件提交
+
+查看工作状态和历史提交
+1 utf8 without bom 是保证兼容性的最好操作
+2 git add readme.md    git commit -m 'this is commit' 这就是这俩命令
+3 查看状态：git status 
+4 本来他就是在工作空间里面，我们需要将至加入到暂存区域之中。
+5 git log 显示提交的记录，
+
+回到过去
+1 git reset HEAD~
+
+
+如果你是个不花时间整理的人，你学到的东西全部都是没有用的
+题目：git学习初步
+0 导论，git是一个优秀的版本控制系统，所以需要好好的领悟一下，git的精妙之处。我虽然不能领悟，但是也想领悟一个皮毛。
+一、git基础知识基础命令整理
+0 关于创建用户的命令，git config --global user.name 'gx'   git config --global user.email 'gaoxiangxw@163.com'
+1 选定一个文件夹，创建git仓库：git init
+2 新建文件或者新建文件夹之后，查看当前的管理状态：git status  git status -s(此为精简版本)
+3 添加文件到暂存状态,添加文件到提交状态。：git add xxx.xxx  git commit -m 'message'    
+
+二、查看更改日志和比较各种状态的不同
+1 查看所有提交过的版本历史记录：git log
+2 查看当前git状态，精简版，：git status -s 如果M变绿了，说明你的修改到了暂存区，是可以提交的。
+3 比较各种版本的差别：
+git diff  将你现在修改了的和暂存的做个比较。
+git diff --cache 将暂存的和已经提交的做个比较
+git diff HEAD 将你修改了的现在的和已经提交的做个比较
+
+三、回到过去，版本回退
+1 reset命令可以干什么：可以将工作空间的文件版本回退值历史版本。
+2 回退的命令：git reset --hard HEAD^      git reset --hard HEAD~100   git reset --hard fsdfsd（此处填版本号码）
+3 如何回到将来：只要你可以获取到将来的版本号码：你就可以回到将来。
+4 获取将来的版本号码：git reflog 记录了每一条的版本号码.。
+5 补充1 ：这个是针对整个项目的回退，针对单个文件的回退我们可以用git checkout 
+
+四、checkout命令 ，针对单个文件进行回退版本
+1 git checkout --  1.py   git checkout fsdfsd(版本号)  --  1.py
+
+五、关于分支
+1 git log --oneline  --graph   用图装查看，可以呈现出分支合并的光景
+2 如何建立和切换分支：git branch xx 建立xx分支    git branch   查看所有的分支    git checkout xxx 切换到xxx分支，
+3 如何删除分支： git branch -d xxx 删除xxx分支
+4 建立分支同时切换过去：git branch -b  dev 建立dev分支并迁移过去
+5 git commit -am 'massage' 同时add同时提交
+6 在本分支上，将另一个分支的内容合并过来   git merge  如果有冲突，那就手动处理冲突，然后提交就行了。
+
+六 git stash 暂存空间
